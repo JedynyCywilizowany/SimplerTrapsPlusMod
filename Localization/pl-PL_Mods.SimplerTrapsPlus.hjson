@@ -1,0 +1,11 @@
+Items: {
+	ElectricTrap_Item: {
+		DisplayName: Elektryczna pułapka
+		// Tooltip: "'Just a prank bro'"
+	}
+
+	NotSoFreshTrap_Item: {
+		DisplayName: Nie taka świeża pułapka
+		Tooltip: "'Przydała by się miętówka...'"
+	}
+}

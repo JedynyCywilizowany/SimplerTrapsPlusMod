@@ -1,0 +1,11 @@
+Items: {
+	ElectricTrap_Item: {
+		DisplayName: Electric Trap
+		Tooltip: "'Just a prank bro'"
+	}
+
+	NotSoFreshTrap_Item: {
+		DisplayName: Not-So-Fresh Trap
+		Tooltip: "'Could use a mint...'"
+	}
+}

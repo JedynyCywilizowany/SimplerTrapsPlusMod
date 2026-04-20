@@ -1,0 +1,8 @@
+Simpler Traps still not simple enough for you?
+well, this mod totally does not add completely new, modded traps:
+
+- Electric Trap (shocks nearby players, works best in water)
+
+- Not-So-Fresh-Trap (floods the room with poisonous gas, does not work in water)
+
+- And definitely not more coming!
