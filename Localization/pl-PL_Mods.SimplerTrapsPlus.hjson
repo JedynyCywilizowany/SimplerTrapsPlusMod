@@ -53,6 +53,8 @@ Items: {
 		DisplayName: Zła pułapka
 		Tooltip: "'Prawdziwie nikczemna'"
 	}
+
+	// EvilDart_Item.Tooltip: ""
 }
 
 Projectiles: {
@@ -67,6 +69,8 @@ Buffs: {
 			'''
 			Ulegasz Transformacji!
 			Nie możesz zmienić poniższych:{0}
+
+			Poniższe Pułapki Transformacyjne nie mogą ponownie nałożyć swoich efektów:{1}
 			'''
 
 		TransformationTooltips: {

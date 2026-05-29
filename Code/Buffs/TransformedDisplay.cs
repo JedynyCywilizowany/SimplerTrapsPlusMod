@@ -24,9 +24,24 @@ public class TransformedDisplayBuff : ColonyBuff
 	private static readonly string transformationTimeLeftColor=CombatText.HealMana.Hex3();
 	public override void ModifyBuffText(ref string buffName,ref string tip,ref int rare)
 	{
+		tooltipBuilder.Clear();
 		locked.Clear();
 		foreach (var entry in Main.LocalPlayer.GetModPlayer<SimplerTrapsPlusPlayer>().activeTransformations??[])
 		{
+			if (entry.reapplyCooldown>0)
+			{
+				tooltipBuilder.AppendLine()
+				.Append("[c/")
+				.Append(transformationEntryColor)
+				.Append(':')
+				.Append(Lang.GetItemNameValue(TileLoader.GetItemDropFromTypeAndStyle(entry.trapTileType)))
+				.Append("]: [c/")
+				.Append(transformationTimeLeftColor)
+				.Append(':')
+				.Append(new TimeSpan((long)Math.Round(entry.reapplyCooldown/60f)*(TimeSpan.TicksPerSecond)).ToString("g"))
+				.Append(']');
+			}
+
 			void Add(string key)
 			{
 				if (entry.timeLeft>locked.GetValueOrDefault(key))
@@ -46,6 +61,7 @@ public class TransformedDisplayBuff : ColonyBuff
 			if (entry.forced_ShoeColor.HasValue) Add("ShoeColor");
 		}
 
+		var tip1=tooltipBuilder.ToString();
 		tooltipBuilder.Clear();
 
 		foreach (var l in locked)
@@ -62,6 +78,6 @@ public class TransformedDisplayBuff : ColonyBuff
 			.Append(']');
 		}
 		
-		tip=tip.FormatWith(tooltipBuilder);
+		tip=tip.FormatWith(tooltipBuilder,tip1);
 	}
 }

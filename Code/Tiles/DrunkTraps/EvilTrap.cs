@@ -69,7 +69,6 @@ namespace SimplerTrapsPlus
 			public override void SetStaticDefaults()
 			{
 				base.SetStaticDefaults();
-				ItemID.Sets.ShimmerTransformToItem[Type]=Type;
 				Item.ResearchUnlockCount=100;
 			}
 			public override void SetDefaults()
@@ -83,6 +82,14 @@ namespace SimplerTrapsPlus
 				{
 					if (amountWeHave>99) Main.LocalPlayerCreativeTracker.ItemSacrifices.SetSacrificeCountDirectly(FullName,99);
 				}
+			}
+			public override void AddRecipes()
+			{
+				CreateRecipe()
+				.AddIngredient(ItemID.SuperDartTrap)
+				.AddIngredient<EvilDart_Item>(50)
+				.AddTile(TileID.DemonAltar)
+				.Register();
 			}
 		}
 	}

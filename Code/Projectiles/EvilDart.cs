@@ -13,7 +13,16 @@ public class EvilDart : ColonyProjectile
 {
 	private int TargetIndex=>(PlayerTarget ? (int)Projectile.ai[0] : (int)Projectile.ai[0]-300);
 	private bool PlayerTarget=>Projectile.ai[0]<300;
-	private Entity Target=>(PlayerTarget ? Main.player[TargetIndex] : Main.npc[TargetIndex]);
+	private int graceTime;
+	private Entity Target
+	{
+		get=>(PlayerTarget ? Main.player[TargetIndex] : Main.npc[TargetIndex]);
+		set
+		{
+			Projectile.ai[0]=((value is NPC) ? value.whoAmI+300 : value.whoAmI);
+		}
+	}
+	
 	public override void SetDefaults()
 	{
 		Projectile.trap=true;
@@ -26,9 +35,18 @@ public class EvilDart : ColonyProjectile
 		Projectile.timeLeft*=5;
 		Projectile.netImportant=true;
 	}
+	public override void OnSpawn(IEntitySource source)
+	{
+		if (source is EntitySource_Parent source_Parent&&source_Parent.Entity is Player)
+		{
+			graceTime=60;
+			Target=source_Parent.Entity;
+		}
+	}
 
 	public override void AI()
 	{
+		if (graceTime>0) graceTime--;
 		if (Projectile.ai[0]>=0)
 		{
 			var target=Target;
@@ -47,14 +65,14 @@ public class EvilDart : ColonyProjectile
 						Projectile.timeLeft=3600;
 					}
 
-					if (Projectile.Hitbox.Intersects(target.Hitbox))
+					if (graceTime==0&&Projectile.Hitbox.Intersects(target.Hitbox))
 					{
 						if (PlayerTarget)
 						{
 							var player=(Player)target;
 							if (player.IsLocal())
 							{
-								player.Hurt(PlayerDeathReason.ByProjectile(-1,Projectile.whoAmI),999,Comparer<float>.Default.Compare(player.Center.X,Projectile.Center.X));
+								player.Hurt(PlayerDeathReason.ByProjectile(Projectile.owner,Projectile.whoAmI),999,Comparer<float>.Default.Compare(player.Center.X,Projectile.Center.X));
 							
 								if (player.DeadOrGhost) Projectile.Kill();
 							}

@@ -53,6 +53,8 @@ Items: {
 		DisplayName: Evil Trap
 		Tooltip: "'Truly despicable'"
 	}
+
+	EvilDart_Item.Tooltip: ""
 }
 
 Projectiles: {
@@ -67,6 +69,8 @@ Buffs: {
 			'''
 			You have been transformed!
 			Cannot change the following:{0}
+
+			The following Transformation Traps cannot reapply thier effects:{1}
 			'''
 
 		TransformationTooltips: {
