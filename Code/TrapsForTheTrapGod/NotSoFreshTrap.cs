@@ -101,7 +101,7 @@ public class NotSoFreshTrap_Gen : TrapForTheTrapGod
 		trapX=plateX;
 		trapY=plateY;
 
-		ColonyDebug.AddWorldGenMarker(new(plateX,plateY),ModContent.GetInstance<NotSoFreshTrap_Item>().Texture);
+		ColonyDebug.AddWorldGenMarker(plateX,plateY,ModContent.GetInstance<NotSoFreshTrap_Item>().Texture);
 
 		return true;
 	}

@@ -1,10 +1,8 @@
 using System;
-using ColonyLib.ContentBases;
-using ColonyLib.TileEntities;
 using Microsoft.Xna.Framework;
+using SimplerTrapsPlus.Items;
 using SimplerTrapsPlus.Projectiles;
-using Terraria;
-using Terraria.DataStructures;
+using SimplerTrapsPlus.Tiles;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -12,48 +10,30 @@ namespace SimplerTrapsPlus
 {
 	namespace Tiles
 	{
-		public class ElectricTrap : ColonyTile
+		public class ElectricTrap : SimplerTrapBase
 		{
 			public override void SetStaticDefaults()
 			{
-				Main.tileSolid[Type]=true;
-				Main.tileBlockLight[Type]=true;
-				Main.tileFrameImportant[Type]=true;
-				TileID.Sets.IsAMechanism[Type]=true;
-				TileID.Sets.DoesntGetReplacedWithTileReplacement[Type]=true;
-				TileID.Sets.DontDrawTileSliced[Type]=true;
+				base.SetStaticDefaults();
 
 				DustType=DustID.Electric;
 
-				AddMapEntry(Color.Gray,ModContent.GetInstance<Items.ElectricTrap_Item>().DisplayName);
+				AddMapEntry(Color.Gray,ModContent.GetInstance<ElectricTrap_Item>().DisplayName);
 			}
-			public override bool Slope(int x,int y)
-			{
-				return false;
-			}
-			public override void HitWire(int x, int y)
-			{
-				if (MechCooldown.Apply(x,y,300+ElectricTrap_Projectile.Duration))
-				{
-					Projectile.NewProjectile(new EntitySource_Wiring(x,y),new Point(x,y).ToWorldCoordinates(),Vector2.Zero,ModContent.ProjectileType<ElectricTrap_Projectile>(),60,1);
-				}
-			}
+
+			public override int Cooldown=>300+ElectricTrap_Projectile.Duration;
+			public override int ProjectileType=>ModContent.ProjectileType<ElectricTrap_Projectile>();
+			public override int ProjectileDamage=>60;
 		}
 	}
 	namespace Items
 	{
-		public class ElectricTrap_Item : ColonyItem
+		public class ElectricTrap_Item : SimplerTrapBase_Item<ElectricTrap>
 		{
-			public override string Texture=>ModContent.GetInstance<Tiles.ElectricTrap>().Texture;
+			public override string Texture=>ModContent.GetInstance<ElectricTrap>().Texture;
 			public override void SetStaticDefaults()
 			{
 				ItemID.Sets.ShimmerTransformToItem[Type]=ItemID.DartTrap;
-			}
-			public override void SetDefaults()
-			{
-				Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.ElectricTrap>());
-				Item.value=5000;
-				Item.mech=true;
 			}
 			public override void AddRecipes()
 			{

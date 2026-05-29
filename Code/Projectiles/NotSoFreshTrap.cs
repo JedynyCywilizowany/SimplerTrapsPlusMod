@@ -268,4 +268,8 @@ public class NotSoFreshTrap_Projectile : ColonyProjectile
 	{
 		return false;
 	}
+	public override bool ShouldUpdatePosition()
+	{
+		return false;
+	}
 }

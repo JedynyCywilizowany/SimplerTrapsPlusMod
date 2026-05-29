@@ -8,4 +8,108 @@ Items: {
 		DisplayName: Nie taka świeża pułapka
 		Tooltip: "'Przydała by się miętówka...'"
 	}
+
+	TransformationTrap_Empty_Item: {
+		DisplayName: Pułapka transformacyjna
+		Tooltip: Jest pusta, nic nie robi
+	}
+
+	TransformationTrap_Negative_Item: {
+		DisplayName: Pułapka odwracająca kolory
+		// Tooltip: ""
+	}
+
+	TransformationTrap_Monochrome_Item: {
+		DisplayName: Pułapka monochromatyzująca
+		// Tooltip: ""
+	}
+
+	TransformationTrap_Hair_Item: {
+		DisplayName: Pułapka stylistyczna
+		// Tooltip: ""
+	}
+
+	TransformationTrap_Gender_Item: {
+		DisplayName: Pułapka zmieniająca płeć
+		Tooltip: "'Zmień piec!'"
+	}
+
+	TransformationTrap_Colors_Item: {
+		DisplayName: Pułapka przekolorowująca
+		// Tooltip: ""
+	}
+
+	TransformationTrap_Clothes_Item: {
+		DisplayName: Pułapka przebierająca
+		// Tooltip: ""
+	}
+
+	TransformationTrap_Randomness_Item: {
+		DisplayName: Pułapka losująca
+		// Tooltip: ""
+	}
+
+	EvilTrap_Item: {
+		DisplayName: Zła pułapka
+		Tooltip: "'Prawdziwie nikczemna'"
+	}
+}
+
+Projectiles: {
+	TransformationRay.DisplayName: Promień transformujący
+	EvilDart.DisplayName: Zła strzałka
+}
+
+Buffs: {
+	TransformedDisplayBuff: {
+		DisplayName: Transformacja
+		Description:
+			'''
+			Ulegasz Transformacji!
+			Nie możesz zmienić poniższych:{0}
+			'''
+
+		TransformationTooltips: {
+			IsMale: Płeć
+			BodyType: Styl ubrań
+			HairStyle: Fryzura
+			HairColor: Kolor włosów
+			SkinColor: Kolor skóry
+			EyeColor: Kolor oczu
+			ShirtColor: Kolor koszulki
+			UnderShirtColor: Kolor podkoszulki
+			PantsColor: Kolor spodni
+			ShoeColor: Kolor butów
+		}
+	}
+}
+
+Configs: {
+	SimplerTrapsPlusConfig: {
+		DisplayName: Ustawienia Even Simpler Traps
+
+		ShouldGenerateDrunkTraps: {
+			Label: Generować "pijane" pułapki
+			// Tooltip: ""
+		}
+	}
+
+	DrunkTrapsCondition: {
+		// Tooltip: ""
+
+		DrunkOnly: {
+			Label: Tylko "pijane" światy
+			// Tooltip: ""
+		}
+
+		Always: {
+			Label: Zawsze
+			// Tooltip: ""
+		}
+
+		Never: {
+			Label: Nigdy
+			// Tooltip: ""
+		}
+	}
 }

@@ -63,7 +63,7 @@ public class ElectricTrap_Gen : TrapForTheTrapGod
 		WorldGen.KillTile(trapX,trapY);
 		WorldGen.PlaceTile(trapX,trapY,ModContent.TileType<ElectricTrap>());
 
-		ColonyDebug.AddWorldGenMarker(new(trapX,trapY),ModContent.GetInstance<ElectricTrap_Item>().Texture);
+		ColonyDebug.AddWorldGenMarker(trapX,trapY,ModContent.GetInstance<ElectricTrap_Item>().Texture);
 
 		return true;
 	}

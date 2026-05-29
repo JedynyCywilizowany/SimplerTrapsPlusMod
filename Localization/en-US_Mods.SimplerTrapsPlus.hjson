@@ -8,4 +8,108 @@ Items: {
 		DisplayName: Not-So-Fresh Trap
 		Tooltip: "'Could use a mint...'"
 	}
+
+	TransformationTrap_Empty_Item: {
+		DisplayName: Transformation Trap
+		Tooltip: It's empty, does nothing
+	}
+
+	TransformationTrap_Negative_Item: {
+		DisplayName: Color-Reversing Trap
+		Tooltip: ""
+	}
+
+	TransformationTrap_Monochrome_Item: {
+		DisplayName: Monochroming Trap
+		Tooltip: ""
+	}
+
+	TransformationTrap_Hair_Item: {
+		DisplayName: Stylist Trap
+		Tooltip: ""
+	}
+
+	TransformationTrap_Gender_Item: {
+		DisplayName: Genderbending Trap
+		Tooltip: ""
+	}
+
+	TransformationTrap_Colors_Item: {
+		DisplayName: Recoloring Trap
+		Tooltip: ""
+	}
+
+	TransformationTrap_Clothes_Item: {
+		DisplayName: Clothes-Changing Trap
+		Tooltip: ""
+	}
+
+	TransformationTrap_Randomness_Item: {
+		DisplayName: Randomizing Trap
+		Tooltip: ""
+	}
+
+	EvilTrap_Item: {
+		DisplayName: Evil Trap
+		Tooltip: "'Truly despicable'"
+	}
+}
+
+Projectiles: {
+	TransformationRay.DisplayName: Transformation Ray
+	EvilDart.DisplayName: Evil Dart
+}
+
+Buffs: {
+	TransformedDisplayBuff: {
+		DisplayName: Transformed
+		Description:
+			'''
+			You have been transformed!
+			Cannot change the following:{0}
+			'''
+
+		TransformationTooltips: {
+			IsMale: Gender
+			BodyType: Clothing Style
+			HairStyle: Hair Style
+			HairColor: Hair Color
+			SkinColor: Skin Color
+			EyeColor: Eye Color
+			ShirtColor: Shirt Color
+			UnderShirtColor: Undershirt Color
+			PantsColor: Pants Color
+			ShoeColor: Shoe Color
+		}
+	}
+}
+
+Configs: {
+	SimplerTrapsPlusConfig: {
+		DisplayName: Even Simpler Traps Config
+
+		ShouldGenerateDrunkTraps: {
+			Label: Should Generate Drunk Traps
+			Tooltip: ""
+		}
+	}
+
+	DrunkTrapsCondition: {
+		Tooltip: ""
+
+		DrunkOnly: {
+			Label: Drunk Worlds Only
+			Tooltip: ""
+		}
+
+		Always: {
+			Label: Always
+			Tooltip: ""
+		}
+
+		Never: {
+			Label: Never
+			Tooltip: ""
+		}
+	}
 }

@@ -110,4 +110,8 @@ public class ElectricTrap_Projectile : ColonyProjectile
 			}
 		}
 	}
+	public override bool ShouldUpdatePosition()
+	{
+		return false;
+	}
 }
