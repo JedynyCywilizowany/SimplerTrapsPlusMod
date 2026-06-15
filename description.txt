@@ -6,7 +6,7 @@ well, this mod totally does not add completely new, modded traps:
 - Not-So-Fresh-Trap (floods the room with poisonous gas, does not work in water)
 
 - "Drunk" Traps, only present on Drunk Worlds, unless configured otherwise:
->> Transformation Traps (7 variants, each transforms your character without thier consent in a different way. Besides dealing damage, of course)
+>> Transformation Traps (7 variants, each changes your character's appearance in a different way. And deals damage, of course)
 >> Evil Trap (Don't ask, better if you don't find out)
 
 - And definitely not more coming!

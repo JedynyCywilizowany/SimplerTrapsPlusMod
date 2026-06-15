@@ -30,7 +30,8 @@ namespace SimplerTrapsPlus
 				{
 					void SpawnFor(int target)
 					{
-						Projectile.NewProjectileDirect(new EntitySource_Wiring(x,y),new Vector2(x*16,y*16),DirectionFromFrame(Main.tile[x,y].TileFrameX/18).ToVector2()*16f,ModContent.ProjectileType<EvilDart>(),999,4.5f,ai0:target);
+						var proj=Projectile.NewProjectileDirect(new EntitySource_Wiring(x,y),new Vector2(x*16,y*16),DirectionFromFrame(Main.tile[x,y].TileFrameX/18).ToVector2()*16f,ModContent.ProjectileType<EvilDart>(),999,4.5f,ai0:target);
+						if (Main.netMode==NetmodeID.SinglePlayer) proj.owner=byte.MaxValue;
 					}
 					foreach (var player in Main.ActivePlayers)
 					{

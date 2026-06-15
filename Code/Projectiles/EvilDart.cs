@@ -22,7 +22,11 @@ public class EvilDart : ColonyProjectile
 			Projectile.ai[0]=((value is NPC) ? value.whoAmI+300 : value.whoAmI);
 		}
 	}
-	
+
+	public override void SetStaticDefaults()
+	{
+		ProjectileID.Sets.NeedsUUID[Type]=true;
+	}
 	public override void SetDefaults()
 	{
 		Projectile.trap=true;
@@ -91,6 +95,10 @@ public class EvilDart : ColonyProjectile
 			}
 		}
 		Projectile.velocity*=0.999f;
+		if ((Projectile.position.X+Projectile.velocity.X)/16<10) Projectile.velocity.X=Math.Abs(Projectile.velocity.X);
+		if ((Projectile.position.X+Projectile.velocity.X)/16>Main.maxTilesX-10) Projectile.velocity.X=-Math.Abs(Projectile.velocity.X);
+		if ((Projectile.position.Y+Projectile.velocity.Y)/16<10) Projectile.velocity.Y=Math.Abs(Projectile.velocity.Y);
+		if ((Projectile.position.Y+Projectile.velocity.Y)/16>Main.maxTilesY-10) Projectile.velocity.Y=-Math.Abs(Projectile.velocity.Y);
 	}
 	public override bool? Colliding(Rectangle projHitbox,Rectangle targetHitbox)
 	{
