@@ -20,12 +20,7 @@ public class ElectricTrap_Projectile : ColonyProjectile
 	internal const float Range_Solid=10;
 	internal const float Range_Water=50;
 
-	internal static SoundStyle activeSound=new(ModContent.GetInstance<ElectricTrap_Projectile>().OwnSoundPath("Activate"))
-	{
-		Volume=1f,
-		PitchVariance=0.25f,
-		MaxInstances=2,
-	};
+	internal static SoundStyle? activeSound;
 
 	private Dictionary<Point,float> affectedTiles=new();
 	public override LocalizedText DisplayName=>ModContent.GetInstance<ElectricTrap_Item>().DisplayName;
@@ -72,8 +67,16 @@ public class ElectricTrap_Projectile : ColonyProjectile
 	{
 		if (affectedTiles.Count==0)
 		{
-			SoundEngine.PlaySound(activeSound,Projectile.position);
-
+			if (!Main.dedServ)
+			{
+				SoundEngine.PlaySound(activeSound??=new(this.OwnSoundPath("Activate"))
+				{
+					Volume=1f,
+					PitchVariance=0.25f,
+					MaxInstances=2,
+				},Projectile.position);
+			}
+			
 			Spread((int)(Projectile.position.X/16),(int)(Projectile.position.Y/16),1);
 			
 			void Spread(int sx,int sy,float rangeLeft)

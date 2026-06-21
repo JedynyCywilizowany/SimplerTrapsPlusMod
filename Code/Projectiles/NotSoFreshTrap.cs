@@ -26,13 +26,7 @@ public class NotSoFreshTrap_Projectile : ColonyProjectile
 
 	private bool IsFading=>(Projectile.timeLeft<=FadeTime);
 	private float Fade=>(!IsFading ? 1f : (float)Projectile.timeLeft/FadeTime);
-	internal static SoundStyle activateSound=new(ModContent.GetInstance<NotSoFreshTrap_Projectile>().OwnSoundPath("Activate"))
-	{
-		Volume=1f,
-		Pitch=0.025f,
-		PitchVariance=0.01f,
-		MaxInstances=3
-	};
+	internal static SoundStyle? activateSound;
 
 	private Dictionary<Point,float> affectedTiles=new();
 	private Dictionary<Point,(Point direction,int timeLeft)> sprays=new();
@@ -119,7 +113,17 @@ public class NotSoFreshTrap_Projectile : ColonyProjectile
 	{
 		if (affectedTiles.Count==0&&sprays.Count==0)
 		{
-			SoundEngine.PlaySound(activateSound,Projectile.position);
+			if (!Main.dedServ)
+			{
+				SoundEngine.PlaySound(activateSound??=new(this.OwnSoundPath("Activate"))
+				{
+					Volume=1f,
+					Pitch=0.025f,
+					PitchVariance=0.01f,
+					MaxInstances=3
+				},Projectile.position);
+			}
+			
 			sprays[(Projectile.position/16).ToPoint()]=(Projectile.velocity.ToPoint(),SprayDuration);
 			Projectile.velocity=Vector2.Zero;
 		}
