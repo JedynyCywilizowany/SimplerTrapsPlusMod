@@ -1,5 +1,5 @@
 displayName= Even Simpler Traps
 author= Jedyny Cywilizowany
-version= 1.1.2.1
+version= 1.1.2.2
 buildIgnore= bin/*, obj/*, Properties/*, .gitignore, README.*, *.csproj, *.sln, *.slnx, .editorconfig
-modReferences= SimplerTraps, ColonyLib
+modReferences= SimplerTraps, ColonyLib 
