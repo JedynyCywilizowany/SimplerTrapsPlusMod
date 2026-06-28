@@ -107,15 +107,15 @@ public class NotSoFreshTrap_Projectile : ColonyProjectile
 		modifiers.HitDirectionOverride=0;
 	}
 
-	private static List<Point> affectedTilesSnapshot=new();
-	private static List<(Point pos,float difference)> spreadQueue=new();
+	private static readonly List<Point> affectedTilesSnapshot=new();
+	private static readonly List<(Point pos,float difference)> spreadQueue=new();
 	public override void AI()
 	{
 		if (affectedTiles.Count==0&&sprays.Count==0)
 		{
 			if (!Main.dedServ)
 			{
-				SoundEngine.PlaySound(activateSound??=new(this.OwnSoundPath("Activate"))
+				SoundEngine.PlaySound(activateSound??=new(this.ContentSoundPath())
 				{
 					Volume=1f,
 					Pitch=0.025f,

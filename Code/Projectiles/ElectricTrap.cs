@@ -69,7 +69,7 @@ public class ElectricTrap_Projectile : ColonyProjectile
 		{
 			if (!Main.dedServ)
 			{
-				SoundEngine.PlaySound(activeSound??=new(this.OwnSoundPath("Activate"))
+				SoundEngine.PlaySound(activeSound??=new(this.ContentSoundPath())
 				{
 					Volume=1f,
 					PitchVariance=0.25f,

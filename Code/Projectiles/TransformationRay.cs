@@ -18,7 +18,7 @@ public class TransformationRay : ColonyProjectile
 	Vector2 startPosition;
 	Vector2 endPosition;
 	public int trapTileType;
-	public override string Texture=>ColonyContentUtils.NoTexture;
+	public override string Texture=>ColonyContentUtils.EmptyTexturePath;
 	public override void SetDefaults()
 	{
 		Projectile.trap=true;
